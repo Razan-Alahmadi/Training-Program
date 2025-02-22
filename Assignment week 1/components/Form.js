@@ -90,8 +90,9 @@ export class Form {
         this.form.addEventListener("submit", this.handleSubmit.bind(this));
     }
 
-    handleSubmit(event) {
+    async handleSubmit(event) {
         event.preventDefault();
+
         const formData = {
             companyName: document.getElementById("companyName").value.trim(),
             crNumber: document.getElementById("crNumber").value.trim(),
@@ -113,8 +114,27 @@ export class Form {
         });
 
         if (Object.keys(errors).length === 0) {
-            alert("Registration successful!");
-            localStorage.setItem("user", JSON.stringify(formData));
+            try {
+                const response = await fetch('https://fake-api-endpoint.com/register', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData), 
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    alert("Registration successful!");
+                    localStorage.setItem("user", JSON.stringify(formData)); 
+                } else {
+                    alert(`Error: ${data.message || "Something went wrong"}`);
+                }
+            } catch (error) {
+                console.error('Error during registration:', error);
+                alert('An error occurred while submitting the form.');
+            }
         }
     }
 
