@@ -7,9 +7,11 @@ This project involves developing a fully responsive and animated user registrati
 ✅ **HTML5 & Semantic Elements** – Clean and structured layout  
 ✅ **CSS (TailwindCSS, Material UI, Animate.css)** – Responsive and animated design  
 ✅ **JavaScript (ES6+, Async/Await, Modules)** – Form validation  
-✅ **API Integration** – Fetch company registration details  
+✅ **API Integration** – Fetch company registration details dynamically  
 ✅ **GitHub Version Control** – Repository hosting and tracking  
 ✅ A custom loading spinner during API calls.
+✅ Dark mode toggle  
+
 
 ## Technologies Used  
 - **Frontend:** HTML5, TailwindCSS, Material UI, Animate.css  
