@@ -90,7 +90,7 @@ export class Form {
 
         this.overlay = document.createElement("div");
         this.overlay.className = "overlay";
-        
+
         this.spinner = document.createElement("div");
         this.spinner.className = "loading";
 
@@ -122,7 +122,7 @@ export class Form {
             document.getElementById("city").value = randomUser.address?.city || "";
             document.getElementById("region").value = randomUser.address?.state || "";
             document.getElementById("zipCode").value = randomUser.address?.postalCode || "";
-            
+
             this.hideSpinner();
         } catch (error) {
             console.error("Error fetching user data:", error);
@@ -156,8 +156,21 @@ export class Form {
         }
 
         console.log("Form submitted successfully!", formData);
+        fetch('https://jsonplaceholder.typicode.com/posts', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formData),
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Form submission response:', data);
+            })
+            .catch(error => {
+                console.error('Error submitting form:', error);
+            });
     }
-
     clearErrors() {
         const errorFields = this.form.querySelectorAll("span.text-red-500");
         errorFields.forEach(field => (field.textContent = ""));
