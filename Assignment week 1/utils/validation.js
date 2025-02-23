@@ -12,8 +12,8 @@ export function validateForm({ companyName, crNumber, email, phone, password, co
 
     if (!phone) {
         errors.phone = "Phone Number is required.";
-    } else if (!/^\d{10}$/.test(phone)) {
-        errors.phone = "Invalid phone number. Must be 10 digits.";
+    } else if (!/^\+?\d{1,4}[\s\-]?\(?\d*\)?[\s\-]?\d+([\s\-]?\d+)*$/.test(phone)) {
+        errors.phone = "Invalid phone number. Please enter a valid phone number.";
     }
 
     if (!password) {
