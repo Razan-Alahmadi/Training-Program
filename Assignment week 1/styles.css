@@ -7,6 +7,21 @@ body {
     margin: 0;
     padding: 0;
 }
+body.dark {
+    position: relative;
+}
+
+body.dark::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(34, 48, 78, 0.7); 
+    z-index: -1; 
+}
+
 
 .overlay {
     position: fixed;
