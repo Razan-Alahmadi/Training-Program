@@ -8,30 +8,51 @@
     <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+        };
+    </script>
 </head>
 
-<body>
-    <header class="p-[25px] text-center" style="background-color: rgb(247, 247, 247);">
-        <div class="">
-            <a href="#" class="float-start">
-                📞<b>920000356</b></a>
-            <span class="float-end" href="#">عربي</span>
+<body class="bg-white dark:bg-gray-900 text-black dark:text-white">
+
+    <header class="p-[25px] text-center bg-gray-100 dark:bg-gray-800">
+        <div class="flex justify-between items-center">
+            <a href="#" class="text-lg text-black dark:text-white">📞<b>920000356</b></a>
+            <div class="flex items-center space-x-4">
+                <button class="darkModeToggle">
+                    🌙
+                </button>
+                <span class="dark:text-white">عربي</span>
+            </div>
         </div>
     </header>
 
-
-   <img class="p-[25px]" src="./utils/logo.svg" alt="">
+    <img class="p-[25px]" src="./utils/logo.svg" alt="">
+    <div class="overlay" id="loadingOverlay">
+        <div class="loading" id="loadingSpinner"></div>
+    </div>
 
     <main class="flex justify-center items-center min-h-screen"><br>
         <div id="app" class="w-full max-w-lg"></div>
     </main>
 
-
-    <footer class="text-center py-4 text-gray-600">
+    <footer class="text-center py-4 text-gray-600 dark:text-gray-400">
         &copy; All rights reserved © ELM 2025
     </footer>
 
     <script type="module" src="main.js"></script>
+
+    <script>
+        document
+            .querySelector(".darkModeToggle")
+            .addEventListener("click", () => {
+                document.body.classList.toggle("dark");
+            });
+    </script>
 </body>
 
 </html>
